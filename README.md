@@ -3,4 +3,5 @@ To run: -
 2. Download / Clone this project
 3. Open powershell in this directory, the write
       > npm i
+4. Then
       > npm start
