@@ -122,31 +122,11 @@ const QuestionElement = ({ nextQuestion, question }) => {
                 height: height,
             }}
         >
-            <div
-                style={{
-                    height: 60,
-                    marginBottom: 10,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    display: 'flex',
-                    flexDirection: 'column',
-                }}
-            >
+            <div style={styles.titleContainer}>
                 {!answer && (
                     <>
                         <div style={{ fontSize: 20 }}>{!giveAnswer ? 'Question Reading Time' : `Answer Time`}</div>
-                        <div
-                            style={{
-                                fontSize: 25,
-                                border: '1px solid #ddd',
-                                borderRadius: 60,
-                                padding: 6,
-                                width: 50,
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                display: 'flex',
-                            }}
-                        >
+                        <div style={styles.timer}>
                             <div>{parseInt(seconds)}</div>
                         </div>
                     </>
@@ -160,15 +140,7 @@ const QuestionElement = ({ nextQuestion, question }) => {
                 }}
             >
                 {!giveAnswer ? (
-                    <div
-                        style={{
-                            height: '100%',
-                            width: '100%',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            display: 'flex',
-                        }}
-                    >
+                    <div style={styles.questionContainer}>
                         <div style={{ fontSize: 24, marginBottom: 100 }}>{question}</div>
                     </div>
                 ) : !answer ? (
@@ -188,14 +160,7 @@ const QuestionElement = ({ nextQuestion, question }) => {
                         <div
                             onMouseMove={e => computeAnswer(e)}
                             onClick={e => saveAnswer(angle)}
-                            style={{
-                                position: 'absolute',
-                                top: 0,
-                                left: 0,
-                                width: '100%',
-                                height: '100%',
-                                zIndex: 1000,
-                            }}
+                            style={styles.movementResponseScreen}
                         ></div>
                     </>
                 ) : (
@@ -230,20 +195,7 @@ const App = () => {
     return (
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
             {!start ? (
-                <div
-                    style={{
-                        maxWidth: 800,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        width: '100%',
-                        height: 400,
-                        padding: 30,
-                        marginTop: 20,
-                        paddingTop: '10%',
-                        backgroundColor: '#f3f3f3',
-                    }}
-                >
+                <div style={styles.startContainer}>
                     <div style={{ fontSize: 20, marginBottom: 20, fontWeight: 600 }}>{`Awesome Quiz`}</div>
 
                     <button
@@ -281,20 +233,7 @@ const App = () => {
                     }}
                 />
             ) : (
-                <div
-                    style={{
-                        maxWidth: 800,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        width: '100%',
-                        height: 400,
-                        padding: 30,
-                        marginTop: 20,
-                        paddingTop: '10%',
-                        backgroundColor: '#f3f3f3',
-                    }}
-                >
+                <div style={styles.startContainer}>
                     <div style={{ fontSize: 20 }}>{`Completed`}</div>
                     <div>
                         <CsvDownload
@@ -366,6 +305,56 @@ const styles = {
         borderRadius: 10,
         height: 15,
         width: 15,
+    },
+
+    timer: {
+        fontSize: 25,
+        border: '1px solid #ddd',
+        borderRadius: 60,
+        padding: 6,
+        width: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        display: 'flex',
+    },
+
+    questionContainer: {
+        height: '100%',
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        display: 'flex',
+    },
+
+    movementResponseScreen: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: 1000,
+    },
+
+    titleContainer: {
+        height: 60,
+        marginBottom: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+    },
+
+    startContainer: {
+        maxWidth: 800,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '100%',
+        height: 400,
+        padding: 30,
+        marginTop: 20,
+        paddingTop: '10%',
+        backgroundColor: '#f3f3f3',
     },
 };
 
