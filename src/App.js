@@ -198,18 +198,7 @@ const App = () => {
                 <div style={styles.startContainer}>
                     <div style={{ fontSize: 20, marginBottom: 20, fontWeight: 600 }}>{`Awesome Quiz`}</div>
 
-                    <button
-                        onClick={() => setStart(true)}
-                        style={{
-                            cursor: 'pointer',
-                            padding: 10,
-                            fontSize: 20,
-                            border: '1px solid #32CD32',
-                            backgroundColor: '#32CD32',
-                            borderRadius: 5,
-                            color: '#fff',
-                        }}
-                    >
+                    <button onClick={() => setStart(true)} style={styles.buttonStyle}>
                         START
                     </button>
                 </div>
@@ -236,19 +225,7 @@ const App = () => {
                 <div style={styles.startContainer}>
                     <div style={{ fontSize: 20 }}>{`Completed`}</div>
                     <div>
-                        <CsvDownload
-                            filename="Participant.csv"
-                            style={{
-                                cursor: 'pointer',
-                                padding: 10,
-                                fontSize: 20,
-                                border: '1px solid #32CD32',
-                                backgroundColor: '#32CD32',
-                                borderRadius: 5,
-                                color: '#fff',
-                            }}
-                            data={data}
-                        >
+                        <CsvDownload filename="Participant.csv" style={styles.buttonStyle} data={data}>
                             DOWNLOAD RESULTS
                         </CsvDownload>
                     </div>
@@ -355,6 +332,16 @@ const styles = {
         marginTop: 20,
         paddingTop: '10%',
         backgroundColor: '#f3f3f3',
+    },
+
+    buttonStyle: {
+        cursor: 'pointer',
+        padding: 10,
+        fontSize: 20,
+        border: '1px solid #32CD32',
+        backgroundColor: '#32CD32',
+        borderRadius: 5,
+        color: '#fff',
     },
 };
 

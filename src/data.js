@@ -1,5 +1,5 @@
 // WRITE TIME IN SECONDS
-export const READING_TIME = 15;
+export const READING_TIME = 2;
 export const ANSWER_TIME = 15;
 export const NEXT_QUESTION_TIME = 1;
 
