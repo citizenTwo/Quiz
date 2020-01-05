@@ -2,7 +2,14 @@ import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import CsvDownload from 'react-json-to-csv';
 import './App.css';
-import { READING_TIME, ANSWER_TIME, NEXT_QUESTION_TIME, QUESTIONS } from './data';
+import {
+    READING_TIME,
+    ANSWER_TIME,
+    NEXT_QUESTION_TIME,
+    QUESTIONS,
+    SHOW_TIMER_IN_QUESTION,
+    SHOW_TIMER_IN_ANSWER,
+} from './data';
 
 export const useWidth = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -126,9 +133,11 @@ const QuestionElement = ({ nextQuestion, question }) => {
                 {!answer && (
                     <>
                         <div style={{ fontSize: 20 }}>{!giveAnswer ? 'Question Reading Time' : `Answer Time`}</div>
-                        <div style={styles.timer}>
-                            <div>{parseInt(seconds)}</div>
-                        </div>
+                        {((giveAnswer && SHOW_TIMER_IN_ANSWER) || (!giveAnswer && SHOW_TIMER_IN_QUESTION)) && (
+                            <div style={styles.timer}>
+                                <div>{parseInt(seconds)}</div>
+                            </div>
+                        )}
                     </>
                 )}
             </div>
