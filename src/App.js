@@ -9,6 +9,8 @@ import {
     QUESTIONS,
     SHOW_TIMER_IN_QUESTION,
     SHOW_TIMER_IN_ANSWER,
+    TITLE,
+    INSTRUCTIONS,
 } from './data';
 
 export const useWidth = () => {
@@ -205,9 +207,15 @@ const App = () => {
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
             {!start ? (
                 <div style={styles.startContainer}>
-                    <div style={{ fontSize: 20, marginBottom: 20, fontWeight: 600 }}>{`Awesome Quiz`}</div>
-
-                    <button onClick={() => setStart(true)} style={styles.buttonStyle}>
+                    <div style={{ fontSize: 20, fontWeight: 600 }}>{TITLE}</div>
+                    {INSTRUCTIONS && Array.isArray(INSTRUCTIONS) && (
+                        <div style={{ marginTop: 10, marginBottom: 10 }}>
+                            {INSTRUCTIONS.map(item => (
+                                <div>{item}</div>
+                            ))}
+                        </div>
+                    )}
+                    <button onClick={() => setStart(true)} style={{ ...styles.buttonStyle, marginTop: 20 }}>
                         START
                     </button>
                 </div>
