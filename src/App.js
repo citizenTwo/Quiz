@@ -11,6 +11,9 @@ import {
     SHOW_TIMER_IN_ANSWER,
     TITLE,
     INSTRUCTIONS,
+    QUESTION_MAX_WIDTH,
+    QUESTION_FONT_SIZE,
+    COMPLETED_TEXT,
 } from './data';
 
 export const useWidth = () => {
@@ -152,7 +155,16 @@ const QuestionElement = ({ nextQuestion, question }) => {
             >
                 {!giveAnswer ? (
                     <div style={styles.questionContainer}>
-                        <div style={{ fontSize: 24, marginBottom: 100 }}>{question}</div>
+                        <div
+                            style={{
+                                fontSize: QUESTION_FONT_SIZE,
+                                marginBottom: 100,
+                                maxWidth: QUESTION_MAX_WIDTH,
+                                padding: 10,
+                            }}
+                        >
+                            {question}
+                        </div>
                     </div>
                 ) : !answer ? (
                     <>
@@ -200,11 +212,12 @@ const App = () => {
     const [question, setQuestion] = useState(0);
     const [start, setStart] = useState(false);
     const [data, setData] = useState([]);
+    const height = useHeight();
 
     console.log(data, 'data');
 
     return (
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', height: height }}>
             {!start ? (
                 <div style={styles.startContainer}>
                     <div style={{ fontSize: 20, fontWeight: 600 }}>{TITLE}</div>
@@ -240,7 +253,7 @@ const App = () => {
                 />
             ) : (
                 <div style={styles.startContainer}>
-                    <div style={{ fontSize: 20 }}>{`Completed`}</div>
+                    <div style={{ fontSize: 20, maxWidth: QUESTION_MAX_WIDTH, marginBottom: 20 }}>{COMPLETED_TEXT}</div>
                     <div>
                         <CsvDownload filename="Participant.csv" style={styles.buttonStyle} data={data}>
                             DOWNLOAD RESULTS

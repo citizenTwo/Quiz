@@ -3,6 +3,10 @@ export const READING_TIME = 2;
 export const ANSWER_TIME = 15;
 export const NEXT_QUESTION_TIME = 1;
 
+// Question width and size setting, write in pixels
+export const QUESTION_MAX_WIDTH = 500;
+export const QUESTION_FONT_SIZE = 24;
+
 // Controls show of time
 export const SHOW_TIMER_IN_QUESTION = true;
 export const SHOW_TIMER_IN_ANSWER = true;
@@ -15,6 +19,14 @@ export const INSTRUCTIONS = [
     '#3  Someone yells "Stop!", goes limp, taps out, the quiz is over.',
     '4 - Only one guy to a quiz',
 ];
+export const COMPLETED_TEXT = 'Congratulations';
 
 // WRITE Questions in '' saperated by ','
-export const QUESTIONS = ['Where be North?', 'Where be South?', 'Where be East?', 'Where be West?'];
+export const QUESTIONS = [
+    'Where be North?',
+    'Where be South?',
+    'Where be East?',
+    'Where be West?',
+    'Where be East?',
+    'Where be West?',
+];
