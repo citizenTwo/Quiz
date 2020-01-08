@@ -11,6 +11,8 @@ import {
     SHOW_TIMER_IN_ANSWER,
     TITLE,
     INSTRUCTIONS,
+    INSTRUCTIONS_FONT,
+    INSTRUCTIONS_FONT_SIZE,
     QUESTION_MAX_WIDTH,
     QUESTION_FONT_SIZE,
     COMPLETED_TEXT,
@@ -68,7 +70,7 @@ const QuestionElement = ({ nextQuestion, question }) => {
     const [seconds, setSeconds] = useState(READING_TIME);
     const [answer, setAnswer] = useState();
     const [giveAnswer, setGiveAnswer] = useState(false);
-    const [angle, setAngle] = useState();
+    const [angle, setAngle] = useState(0);
 
     const ANSWER_WINDOW_HEIGHT = useHeight() - 120;
     const height = useHeight();
@@ -100,6 +102,7 @@ const QuestionElement = ({ nextQuestion, question }) => {
         setSeconds(READING_TIME);
         setGiveAnswer(false);
         setAnswer(null);
+        setAngle(0);
     }, [question]);
 
     const computeAnswer = e => {
@@ -161,6 +164,7 @@ const QuestionElement = ({ nextQuestion, question }) => {
                                 marginBottom: 100,
                                 maxWidth: QUESTION_MAX_WIDTH,
                                 padding: 10,
+                                whiteSpace: 'pre-wrap',
                             }}
                         >
                             {question}
@@ -174,7 +178,7 @@ const QuestionElement = ({ nextQuestion, question }) => {
                             style={{
                                 ...styles.rod,
                                 transform: `rotate(${angle - 90}deg)`,
-                                backgroundColor: angle ? '#444' : '#ccc',
+                                backgroundColor: '#444',
                                 width: Math.min(ANSWER_WINDOW_HEIGHT, ANSWER_WINDOW_WIDTH) / 2 - 50,
                                 top: ANSWER_WINDOW_HEIGHT / 2,
                                 left: ANSWER_WINDOW_WIDTH / 2,
@@ -224,7 +228,9 @@ const App = () => {
                     {INSTRUCTIONS && Array.isArray(INSTRUCTIONS) && (
                         <div style={{ marginTop: 10, marginBottom: 10 }}>
                             {INSTRUCTIONS.map(item => (
-                                <div>{item}</div>
+                                <div style={{ fontSize: INSTRUCTIONS_FONT_SIZE, fontFamily: INSTRUCTIONS_FONT }}>
+                                    {item}
+                                </div>
                             ))}
                         </div>
                     )}

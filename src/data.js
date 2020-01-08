@@ -7,6 +7,10 @@ export const NEXT_QUESTION_TIME = 1;
 export const QUESTION_MAX_WIDTH = 500;
 export const QUESTION_FONT_SIZE = 24;
 
+// Instruction Font size and font
+export const INSTRUCTIONS_FONT = 'San-serif';
+export const INSTRUCTIONS_FONT_SIZE = 23;
+
 // Controls show of time
 export const SHOW_TIMER_IN_QUESTION = true;
 export const SHOW_TIMER_IN_ANSWER = true;
@@ -21,9 +25,9 @@ export const INSTRUCTIONS = [
 ];
 export const COMPLETED_TEXT = 'Congratulations';
 
-// WRITE Questions in '' saperated by ','
+// WRITE Questions in '' saperated by ',' | use '\n' to enter in new line
 export const QUESTIONS = [
-    'Where be North?',
+    'Where be North?\n\nWhere be North?',
     'Where be South?',
     'Where be East?',
     'Where be West?',
